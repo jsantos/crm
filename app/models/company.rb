@@ -19,4 +19,6 @@ class Company < ApplicationRecord
                      with: /\A[a-zA-Z0-9-]+\z/,
                      message: 'has an invalid format'
                    }
+
+  has_many :groups, dependent: :destroy
 end
