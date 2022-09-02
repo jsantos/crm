@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: 'json' } do
     namespace :v1 do
       resources :companies, only: %i[index create destroy] do
+        resources :groups, controller: 'companies/groups', only: %i[index create destroy]
         resources :users, controller: 'companies/users', only: :create
       end
     end

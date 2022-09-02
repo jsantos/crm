@@ -23,4 +23,8 @@ class Group < ApplicationRecord
   validates :name, presence: true,
                    uniqueness: { scope: :company },
                    length: { maximum: 100 }
+
+  def user_count
+    users.size
+  end
 end

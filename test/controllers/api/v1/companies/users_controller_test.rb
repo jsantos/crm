@@ -1,7 +1,7 @@
 require "test_helper"
 
 class Api::V1::Companies::UsersControllerTest < ActionDispatch::IntegrationTest
-  describe 'POST #create' do
+  describe 'POST :create' do
     let(:company) { companies(:globalsign) }
     let(:user) { users(:john_doe) }
 
