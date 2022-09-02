@@ -44,5 +44,12 @@ class Api::V1::CompaniesControllerTest < ActionDispatch::IntegrationTest
       delete api_v1_company_url(-1)
       _(response.status).must_equal 404
     end
+
+    # Just to test the Api::V1::BaseController method to handle exceptions
+    it 'returns a 500 code if there was any exception raised' do
+      Company.any_instance.stubs(:destroy).raises(Exception, 'Oh no!')
+      subject
+      _(response.status).must_equal 500
+    end
   end
 end
