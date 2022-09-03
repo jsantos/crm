@@ -4,6 +4,10 @@ human_resources:
   name: Human Resources
   company: globalsign
 
+engineering:
+  name: Engineering
+  company: globalsign
+
 executive_board:
   name: Executive Board
   company: e_corp
