@@ -83,4 +83,4 @@ production:
   <<: *default
   database: crm_production
   username: crm
-  password: <%= ENV["CRM_DATABASE_PASSWORD"] %>
+  password: <%= ENV['DATABASE_URL'] %>

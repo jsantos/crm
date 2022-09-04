@@ -1,0 +1,29 @@
+FROM ruby:3.1.2-alpine3.16
+
+# Minimal requirements to run a Rails app
+RUN apk add --no-cache --update build-base \
+                                linux-headers \
+                                git \
+                                postgresql-dev \
+                                tzdata
+
+# Set an environment variable where the Rails app is installed to inside of Docker image
+ENV RAILS_ROOT /var/www/crm
+RUN mkdir -p $RAILS_ROOT
+
+# Set working directory
+WORKDIR $RAILS_ROOT
+
+# Setting env up
+ENV RAILS_ENV='production'
+ENV RACK_ENV='production'
+
+# Adding gems
+COPY Gemfile Gemfile
+COPY Gemfile.lock Gemfile.lock
+RUN bundle install --retry 5
+
+# Adding project files
+COPY . .
+EXPOSE 3000
+CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]

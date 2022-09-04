@@ -28,3 +28,5 @@
 # Ignore master key for decrypting credentials and more.
 # /config/master.key # This is just a sample project, no need to keep this away
 coverage
+
+/.env
